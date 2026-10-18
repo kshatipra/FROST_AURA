@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Why little pauses matter: what research says about alarms, water, breaks, focus and breathing.">
+<style>[hidden]{display:none!important} img{max-width:100%} body{margin:0}</style>
+<title>The Little Pauses</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: FROST's dark studio world. One habit per screen: a big real number, two plain lines, a small honest chart or animation, and the source right there. Single deliberate dark look. */
+:root{
+  --night:#0B0E13;
+  --night-2:#11151C;
+  --card:#151A23;
+  --line:#283040;
+  --ink:#EEF2F7;
+  --mist:#8C95A5;
+  --blue:#7CC4FF;
+  --violet:#B9A6FF;
+  --amber:#FFB86B;
+  --green:#8FE3BC;
+  --f-display:"Sora","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Manrope","Helvetica Neue",Arial,system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;letter-spacing:-.025em;text-wrap:balance;margin:0}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+.src{font-family:var(--f-mono);font-size:11.5px;color:var(--mist);line-height:1.5}
+.src a{color:var(--mist);text-decoration-color:var(--line)}
+.src a:hover{color:var(--ink)}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--night)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--night) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.logo{font-family:var(--f-display);font-weight:600;letter-spacing:.32em;font-size:14px;text-decoration:none}
+.nav{display:flex;gap:22px;font-size:14px}
+.nav a{text-decoration:none;color:var(--mist)}
+.nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;text-decoration:none;padding:12px 22px;border-radius:999px;border:1.5px solid var(--ink);transition:background .2s,color .2s}
+.btn.primary{background:var(--ink);color:var(--night)}
+.btn.ghost{color:var(--ink)}
+.btn.small{padding:7px 14px;font-size:13px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+/* hero */
+.hero{text-align:center;padding-block:clamp(64px,10vw,128px) clamp(40px,6vw,72px);position:relative;overflow:hidden}
+.hero h1{font-size:clamp(44px,8vw,100px);font-weight:300;line-height:1}
+.hero h1 b{font-weight:600}
+.hero .sub{margin:18px auto 0;max-width:44ch;color:var(--mist);font-size:clamp(17px,1.8vw,20px)}
+.orbs{display:flex;justify-content:center;gap:clamp(14px,3vw,28px);margin-top:44px}
+.orbs a{display:grid;justify-items:center;gap:8px;text-decoration:none;font-size:13px;color:var(--mist)}
+.orbs i{width:clamp(44px,7vw,64px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 50%, var(--c) 0%, color-mix(in srgb,var(--c) 30%,transparent) 45%, transparent 70%);animation:glow 3.6s ease-in-out infinite;animation-delay:var(--d)}
+.orbs a:hover{color:var(--ink)}
+
+/* habit screens */
+.habit{padding-block:clamp(72px,10vw,120px);border-top:1px solid var(--line);position:relative;overflow:hidden}
+.habit::before{content:"";position:absolute;inset:-20% -10% auto auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle, color-mix(in srgb,var(--c) 14%,transparent), transparent 65%);pointer-events:none}
+.habit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:center;position:relative}
+.habit.flip .copy{order:2}
+.copy{display:grid;gap:16px;min-width:0}
+.copy .tag{color:var(--c)}
+.copy h2{font-size:clamp(32px,4.6vw,54px);line-height:1.08}
+.big{font-family:var(--f-display);font-weight:300;font-size:clamp(64px,10vw,120px);line-height:1;letter-spacing:-.04em;color:var(--c);font-variant-numeric:tabular-nums}
+.big{white-space:nowrap}
+.big small{display:block;margin-top:8px;font-size:max(15px,.18em);letter-spacing:0;color:var(--mist);font-weight:400;white-space:normal}
+.copy p.body{color:#C9D0DB;font-size:18px;max-width:46ch}
+.aura{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--card);max-width:46ch}
+.aura i{flex:none;width:12px;height:12px;border-radius:50%;margin-top:6px;background:var(--c);box-shadow:0 0 14px var(--c)}
+.aura p{font-size:15px;color:#C9D0DB}
+.aura b{color:var(--ink);font-weight:600}
+.soon{display:inline-block;margin-left:6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:999px;border:1px solid var(--line);color:var(--mist)}
+.viz{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;gap:12px}
+.viz svg{width:100%;height:auto;display:block}
+.viz .cap{font-size:13px;color:var(--mist)}
+.viz text{font-family:var(--f-mono);font-size:11px;fill:var(--mist)}
+
+
+/* brain */
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pane{border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;gap:6px;align-content:start;background:#0F131A;min-width:0}
+.pane .lab{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mist)}
+.pane p{font-size:14px;color:#C9D0DB}
+.pane svg{width:100%;height:auto;display:block}
+.pane.alarm{border-color:color-mix(in srgb,#FF6B6B 40%,var(--line))}
+.pane.glowp{border-color:color-mix(in srgb,var(--blue) 40%,var(--line))}
+.shake{transform-box:fill-box;transform-origin:center;animation:shake 2.4s infinite}
+.burst{opacity:0;animation:burst 2.4s infinite}
+.spike{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.4s infinite}
+.calm{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 4.8s ease-in-out infinite}
+.soft{animation:glow 4.8s ease-in-out infinite}
+.ringp{animation:glow 4.8s ease-in-out infinite}
+@keyframes shake{0%,8%,100%{transform:none}2%{transform:translateX(-5px) rotate(-6deg)}4%{transform:translateX(5px) rotate(6deg)}6%{transform:translateX(-3px) rotate(-3deg)}}
+@keyframes burst{0%,1%{opacity:0}3%,14%{opacity:1}22%,100%{opacity:0}}
+@keyframes draw{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@media (max-width:480px){.duo{grid-template-columns:1fr}}
+/* water glass */
+.wl{transition:y 2.2s cubic-bezier(.3,.8,.3,1),height 2.2s cubic-bezier(.3,.8,.3,1)}
+.wave{animation:wave 3.2s ease-in-out infinite}
+/* micro-break dots */
+.dot{opacity:.15;transition:opacity .4s, transform .4s;transform-box:fill-box;transform-origin:center}
+.in .dot{opacity:1}
+/* bars */
+.gb{transform-box:fill-box;transform-origin:bottom;transform:scaleY(.02);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.in .gb{transform:scaleY(1)}
+/* focus blocks */
+.fb{opacity:0;transition:opacity .35s}
+.in .fb{opacity:1}
+/* breathe */
+.breath{display:grid;justify-items:center;gap:14px}
+.ball{width:min(220px,60vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;position:relative}
+.ball::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle, color-mix(in srgb,var(--green) 70%,transparent), color-mix(in srgb,var(--green) 10%,transparent) 60%, transparent 72%);transform:scale(var(--s,.55));transition:transform var(--dur,1s) ease-in-out}
+.ball span{position:relative;font-family:var(--f-display);font-size:20px}
+.bctl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center}
+.bctl button{font:inherit;font-weight:600;font-size:14px;padding:9px 18px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--night);cursor:pointer}
+.bctl .count{font-family:var(--f-mono);font-size:12px;color:var(--mist);min-width:9ch}
+/* vibes */
+.ripples{position:relative;aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden;border-radius:16px;background:radial-gradient(60% 60% at 50% 55%, #121A26, var(--card))}
+.ripples i{position:absolute;width:30%;aspect-ratio:1;border-radius:50%;border:1.5px solid var(--blue);opacity:0;animation:rip 4.8s ease-out infinite}
+.ripples i:nth-child(2){animation-delay:1.2s}
+.ripples i:nth-child(3){animation-delay:2.4s}
+.ripples i:nth-child(4){animation-delay:3.6s}
+.ripples b{position:relative;font-family:var(--f-display);font-weight:300;font-size:clamp(20px,2.6vw,28px);text-align:center;max-width:16ch;line-height:1.25}
+.truth{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.truth div{background:var(--card);padding:16px;display:grid;gap:6px}
+.truth span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+.truth p{font-size:14.5px;color:#C9D0DB}
+
+/* map */
+.map{padding-block:clamp(72px,10vw,120px);border-top:1px solid var(--line);text-align:center}
+.map h2{font-size:clamp(32px,4.6vw,54px)}
+.tiles{margin:40px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;text-align:left}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 18px;display:grid;gap:8px;align-content:start;min-width:0}
+.tile i{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle,var(--c),transparent 70%);animation:glow 3s ease-in-out infinite}
+.tile b{font-family:var(--f-display);font-weight:400;font-size:20px}
+.tile p{font-size:14px;color:var(--mist)}
+.note{margin:36px auto 0;max-width:62ch;font-size:13.5px;color:var(--mist);text-align:center}
+.sources{padding-block:56px;border-top:1px solid var(--line)}
+.sources ol{margin:16px 0 0;padding-left:22px;display:grid;gap:8px;font-size:14px;color:var(--mist)}
+.sources a{color:#C9D0DB}
+footer{padding-block:24px;font-size:12px;color:var(--mist);text-align:center;border-top:1px solid var(--line)}
+
+@keyframes glow{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.06)}}
+@keyframes wave{0%,100%{transform:translateX(0)}50%{transform:translateX(-14px)}}
+@keyframes rip{0%{transform:scale(.4);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (max-width:860px){
+  .nav{display:none}
+  .habit .wrap{grid-template-columns:1fr}
+  .habit.flip .copy{order:0}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:480px){ .truth{grid-template-columns:1fr} .orbs a span{font-size:12px} }
+</style>
+</head>
+<body>
+
+
+<header class="bar">
+  <div class="wrap">
+    <span class="logo">FROST</span>
+    <nav class="nav" aria-label="Habits"><a href="#brain">Your brain</a><a href="#water">Water</a><a href="#breaks">Breaks</a><a href="#move">Move</a><a href="#focus">Focus</a><a href="#breathe">Breathe</a><a href="#vibes">Good vibes</a></nav>
+    <a class="btn primary small" href="https://www.indiegogo.com/en/projects/frostactive-38748367/stay-hydrated-focused-balanced-meet-frost-aura" target="_blank" rel="noopener">Back FROST Aura</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <p class="tag">Why little pauses matter</p>
+    <h1 style="margin-top:16px">Small pauses.<br><b>Real differences.</b></h1>
+    <p class="sub">We care about your brain, your body and your focus. Here's what research says about alarms, water, breaks and breathing, in plain words, with the sources.</p>
+    <div class="orbs">
+      <a href="#water" style="--c:var(--blue);--d:0s"><i></i><span>Water</span></a>
+      <a href="#breaks" style="--c:var(--amber);--d:.5s"><i></i><span>Breaks</span></a>
+      <a href="#focus" style="--c:var(--violet);--d:1s"><i></i><span>Focus</span></a>
+      <a href="#breathe" style="--c:var(--green);--d:1.5s"><i></i><span>Breathe</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- BRAIN -->
+<section class="habit brain" id="brain" style="--c:var(--blue)">
+  <div class="wrap">
+    <div class="copy">
+      <p class="tag">Your brain first</p>
+      <h2>We care about your brain.</h2>
+      <p class="body">A sudden beep or ringtone triggers your startle reflex: a jolt, a blink, a quick jump in heart rate. Your attention gets yanked away from whatever you were doing.</p>
+      <p class="big">3×<small>more mistakes in one lab test, after a call or text that went unanswered</small></p>
+      <p class="body">In one study, students who got a call or text during an attention test, without even looking at it, made about three times as many mistakes. In another, people who were interrupted worked faster but felt more stressed and frustrated.</p>
+      <div class="aura"><i></i><p><b>Aura uses light, not sound.</b> It sits in the corner of your eye, so you notice it when you're ready. Designers call this calm technology: tech that informs without demanding your attention.</p></div>
+      <p class="src">Sources: <a href="https://www.psychologicalscience.org/news/motr/youre-distracted-even-when-you-ignore-that-text.html" target="_blank" rel="noopener">Stothart et al., 2015</a> · <a href="https://www.interruptions.net/literature/Mark-CHI08.pdf" target="_blank" rel="noopener">Mark et al., CHI 2008</a> · <a href="https://en.wikipedia.org/wiki/Calm_technology" target="_blank" rel="noopener">Weiser &amp; Brown, Calm Technology, 1995</a></p>
+    </div>
+    <div class="viz">
+      <div class="duo">
+        <div class="pane alarm">
+          <span class="lab">A beep</span>
+          <svg viewBox="0 0 200 120" aria-hidden="true">
+            <g class="shake"><rect x="74" y="40" width="52" height="40" rx="8" fill="none" stroke="#FF6B6B" stroke-width="2.5"/><path d="M84 40 V30 M116 40 V30" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round"/><text x="100" y="66" text-anchor="middle" style="fill:#FF6B6B;font-size:13px">07:00</text></g>
+            <path class="burst" d="M40 60 L58 60 M142 60 L160 60 M52 30 L66 40 M148 30 L134 40 M52 90 L66 80 M148 90 L134 80" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <svg viewBox="0 0 200 70" class="trace" aria-hidden="true"><path class="spike" d="M0 50 H60 L66 50 L72 8 L78 62 L84 20 L90 56 L96 34 L102 50 H200" fill="none" stroke="#FF6B6B" stroke-width="2.5" stroke-linejoin="round" pathLength="1"/></svg>
+          <p>Startle. Heart rate jumps. Focus breaks.</p>
+        </div>
+        <div class="pane glowp">
+          <span class="lab">A glow</span>
+          <svg viewBox="0 0 200 120" aria-hidden="true">
+            <ellipse class="soft" cx="100" cy="74" rx="62" ry="14" fill="none" stroke="#7CC4FF" stroke-width="10" style="filter:blur(6px)"/>
+            <ellipse cx="100" cy="76" rx="66" ry="15" fill="#151A23" stroke="#EEF2F7" stroke-width="2"/>
+            <ellipse class="ringp" cx="100" cy="73" rx="54" ry="10" fill="none" stroke="#7CC4FF" stroke-width="3"/>
+            <rect x="88" y="22" width="24" height="50" rx="7" fill="#151A23" stroke="#EEF2F7" stroke-width="2"/>
+          </svg>
+          <svg viewBox="0 0 200 70" class="trace" aria-hidden="true"><path class="calm" d="M0 46 C30 46 40 38 70 38 S120 44 140 40 S180 40 200 40" fill="none" stroke="#7CC4FF" stroke-width="2.5" pathLength="1"/></svg>
+          <p>Noticed in the corner of your eye. Nothing to dismiss.</p>
+        </div>
+      </div>
+      <p class="cap">Illustration, not measured data. We haven't tested Aura's effect on the brain. The glow is designed to be noticed without startling you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WATER -->
+<section class="habit" id="water" style="--c:var(--blue)">
+  <div class="wrap">
+    <div class="copy">
+      <p class="tag">Water</p>
+      <h2>Mild dehydration can change how you feel.</h2>
+      <p class="big">1–2%<small>of body weight</small></p>
+      <p class="body">In lab studies, young men who lost that much water reported more tiredness and tension, and made more errors on attention tests. Young women in a similar study felt lower in mood, had more headaches and found tasks harder.</p>
+      <div class="aura"><i></i><p><b>Aura glows blue</b> when it's been a while since your last sip, so you drink a little and often instead of catching up at night.</p></div>
+      <p class="src">Sources: <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/S0007114511002005" target="_blank" rel="noopener">Ganio et al., British Journal of Nutrition, 2011</a> · <a href="https://livescience.com/36106-mild-dehydration-triggers-moodiness-fatigue-women.html" target="_blank" rel="noopener">Armstrong et al., Journal of Nutrition, 2012 (summary)</a></p>
+    </div>
+    <div class="viz" id="vWater">
+      <svg viewBox="0 0 400 300" aria-label="Two glasses showing EFSA adequate daily water intake: 2.0 litres for women and 2.5 litres for men">
+        <defs>
+          <clipPath id="g1"><path d="M70 40 L170 40 L160 262 Q120 272 80 262 Z"/></clipPath>
+          <clipPath id="g2"><path d="M230 40 L330 40 L320 262 Q280 272 240 262 Z"/></clipPath>
+        </defs>
+        <g clip-path="url(#g1)"><rect class="wl" id="wl1" x="60" y="268" width="120" height="0" fill="#7CC4FF" opacity=".55"/><path class="wave" d="M40 0 Q60 -6 80 0 T120 0 T160 0 T200 0 V8 H40 Z" fill="#7CC4FF" opacity=".8" id="wv1" transform="translate(0 268)"/></g>
+        <g clip-path="url(#g2)"><rect class="wl" id="wl2" x="220" y="268" width="120" height="0" fill="#7CC4FF" opacity=".55"/></g>
+        <path d="M70 40 L170 40 L160 262 Q120 272 80 262 Z" fill="none" stroke="#EEF2F7" stroke-width="2.5"/>
+        <path d="M230 40 L330 40 L320 262 Q280 272 240 262 Z" fill="none" stroke="#EEF2F7" stroke-width="2.5"/>
+        <text x="120" y="292" text-anchor="middle" style="font-size:13px;fill:#EEF2F7">2.0 L · women</text>
+        <text x="280" y="292" text-anchor="middle" style="font-size:13px;fill:#EEF2F7">2.5 L · men</text>
+      </svg>
+      <p class="cap">Adequate daily water intake for adults, set by the European Food Safety Authority (total water, from drinks and food). Heat, exercise and health conditions change what you need. <span class="src"><a href="https://www.efsa.europa.eu/en/press/news/nda100326" target="_blank" rel="noopener">EFSA</a></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- BREAKS -->
+<section class="habit flip" id="breaks" style="--c:var(--amber)">
+  <div class="wrap">
+    <div class="copy">
+      <p class="tag">Breaks</p>
+      <h2>Short breaks keep your energy up.</h2>
+      <p class="big">22<small>studies reviewed</small></p>
+      <p class="body">Across 22 studies, breaks of ten minutes or less were linked to more energy and less fatigue. They didn't make people work better on every task, so think of them as looking after yourself, not a productivity hack.</p>
+      <div class="aura"><i></i><p><b>Aura glows amber</b> when you've been sitting a long time. Stand up, stretch, get a refill.</p></div>
+      <p class="src">Source: <a href="https://Www.sciencedaily.com/releases/2022/08/220831152754.htm" target="_blank" rel="noopener">Albulescu et al., PLOS ONE, 2022 (summary)</a></p>
+    </div>
+    <div class="viz" id="vBreaks">
+      <svg viewBox="0 0 400 220" id="dots" aria-label="22 dots, one for each study in the review"></svg>
+      <p class="cap">One dot for each study in the review. Micro-breaks: 10 minutes or less.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MOVE -->
+<section class="habit" id="move" style="--c:var(--amber)">
+  <div class="wrap">
+    <div class="copy">
+      <p class="tag">Move</p>
+      <h2>Standing up does more than stretch your legs.</h2>
+      <p class="big">~25%<small>lower glucose rise</small></p>
+      <p class="body">In a lab study, adults who took a 2-minute light walk every 20 minutes had a smaller blood sugar rise after a meal than when they sat for 5 hours straight. That is a lab result about walking breaks, not something Aura has been tested for.</p>
+      <div class="aura"><i></i><p><b>The same amber cue</b> works as your reminder to get up and walk for a minute.</p></div>
+      <p class="src">Source: <a href="https://www.sedentarybehaviour.org/2012/03/08/diabetes-care-breaking-up-prolonged-sitting-reduces-postprandial-glucose-and-insulin-responses/" target="_blank" rel="noopener">Dunstan et al., Diabetes Care, 2012</a> · 19 adults aged 45–65 with overweight or obesity.</p>
+    </div>
+    <div class="viz" id="vMove">
+      <svg viewBox="0 0 400 260" id="glu" aria-label="Bar chart of glucose response after a meal: 6.9 when sitting the whole time, 5.2 with light walking breaks, 4.9 with moderate walking breaks, in mmol per litre times hours"></svg>
+      <p class="cap">Glucose response over 5 hours after a meal (incremental area under the curve, mmol/L·h).</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS -->
+<section class="habit flip" id="focus" style="--c:var(--violet)">
+  <div class="wrap">
+    <div class="copy">
+      <p class="tag">Focus</p>
+      <h2>A timer can make breaks easier.</h2>
+      <p class="big">24 + 6<small>minutes</small></p>
+      <p class="body">Students who studied in fixed blocks of 24 minutes with a 6-minute break felt less tired and distracted, and more focused and motivated, than students who took breaks whenever they felt like it. They got the same work done.</p>
+      <div class="aura"><i></i><p><b>Focus sessions</b> on Aura's display, with a violet light while you work.<span class="soon">Coming before mass production</span></p></div>
+      <p class="src">Source: <a href="https://cris.maastrichtuniversity.nl/en/publications/understanding-effort-regulation-comparing-pomodoro-breaks-and-sel" target="_blank" rel="noopener">Biwer et al., British Journal of Educational Psychology, 2023</a> · 87 university students.</p>
+    </div>
+    <div class="viz" id="vFocus">
+      <svg viewBox="0 0 400 190" id="blocks" aria-label="Diagram: two hours split into four blocks of 24 minutes of focus and 6 minutes of break"></svg>
+      <p class="cap">Two hours, Pomodoro style: focus (violet) and short breaks (amber).</p>
+    </div>
+  </div>
+</section>
+
+<!-- BREATHE -->
+<section class="habit" id="breathe" style="--c:var(--green)">
+  <div class="wrap">
+    <div class="copy">
+      <p class="tag">Breathe</p>
+      <h2>Five minutes of slow breathing.</h2>
+      <p class="big">5<small>minutes a day</small></p>
+      <p class="body">People who did 5 minutes of "cyclic sighing" a day for a month (two breaths in through the nose, one long breath out) saw their mood improve more than a group doing mindfulness meditation.</p>
+      <div class="aura"><i></i><p><b>A slow green light</b> to breathe along with.<span class="soon">Coming before mass production</span></p></div>
+      <p class="src">Source: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9873947" target="_blank" rel="noopener">Balban et al., Cell Reports Medicine, 2023</a> · 108 people, small exploratory trial.</p>
+    </div>
+    <div class="viz breath" id="vBreathe">
+      <div class="ball" id="ball"><span id="bword">Ready?</span></div>
+      <div class="bctl"><button type="button" id="bgo">Try one minute</button><span class="count" id="bcount"></span></div>
+      <p class="cap" style="text-align:center">Inhale through the nose, a second short inhale on top, then a long, slow exhale through the mouth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map">
+  <div class="wrap">
+    <h2>One light. Four little habits.</h2>
+    <div class="tiles">
+      <div class="tile" style="--c:var(--blue)"><i></i><b>Blue · Sip</b><p>When it's been a while since your last drink.</p></div>
+      <div class="tile" style="--c:var(--amber)"><i></i><b>Amber · Move</b><p>When you've been sitting too long.</p></div>
+      <div class="tile" style="--c:var(--violet)"><i></i><b>Violet · Focus</b><p>Focus sessions on the display. <span class="soon">Coming</span></p></div>
+      <div class="tile" style="--c:var(--green)"><i></i><b>Green · Breathe</b><p>A slow light to breathe with. <span class="soon">Coming</span></p></div>
+    </div>
+    <div class="btns" style="margin-top:36px"><a class="btn primary" href="https://www.indiegogo.com/en/projects/frostactive-38748367/stay-hydrated-focused-balanced-meet-frost-aura" target="_blank" rel="noopener">Back FROST Aura · from $49</a><a class="btn ghost" href="index.html">See the campaign</a></div>
+    <p class="note">These studies are about the habits themselves. Aura hasn't been tested for these outcomes. General information, not medical advice. Aura is a reminder device, not a medical product. If you have a heart or kidney condition, or your doctor has told you to limit fluids, follow their advice. Light colours shown are illustrative.</p>
+  </div>
+</section>
+
+<!-- VIBES -->
+<section class="habit" id="vibes" style="--c:var(--blue)">
+  <div class="wrap">
+    <div class="copy">
+      <p class="tag">A note on good vibes</p>
+      <h2>And the "water vibrations"?</h2>
+      <p class="body">You may have heard that water picks up vibrations, or changes with music and kind words. There's no reliable scientific evidence for that. The experiments behind those claims were never confirmed in careful, blinded tests.</p>
+      <p class="body">The good feeling is real, though. It comes from the ritual: you stop, breathe, notice the light and take a sip. That moment is for you.</p>
+      <p class="src">Read more: <a href="https://skeptoid.com/episodes/4433" target="_blank" rel="noopener">Skeptoid on the water crystal claims</a></p>
+    </div>
+    <div class="viz">
+      <div class="ripples" aria-hidden="true"><i></i><i></i><i></i><i></i><b>The calm comes from the pause.</b></div>
+      <div class="truth">
+        <div><span style="color:var(--green)">What's real</span><p>A short pause, a slow breath and a sip can leave you feeling calmer.</p></div>
+        <div><span style="color:var(--amber)">What isn't proven</span><p>Light, sound or vibration changing the water itself.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sources">
+  <div class="wrap">
+    <p class="tag">Sources</p>
+    <ol>
+      <li><a href="https://www.psychologicalscience.org/news/motr/youre-distracted-even-when-you-ignore-that-text.html" target="_blank" rel="noopener">Stothart C, Mitchum A, Yehnert C. The attentional cost of receiving a cell phone notification. Journal of Experimental Psychology: Human Perception and Performance, 2015 (APS summary).</a></li>
+      <li><a href="https://www.interruptions.net/literature/Mark-CHI08.pdf" target="_blank" rel="noopener">Mark G, Gudith D, Klocke U. The cost of interrupted work: more speed and stress. CHI 2008.</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Calm_technology" target="_blank" rel="noopener">Calm technology. Weiser M, Brown JS. Designing Calm Technology, Xerox PARC, 1995 (overview).</a></li>
+      <li><a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/S0007114511002005" target="_blank" rel="noopener">Ganio MS, Armstrong LE, et al. Mild dehydration impairs cognitive performance and mood of men. British Journal of Nutrition, 2011.</a></li>
+      <li><a href="https://livescience.com/36106-mild-dehydration-triggers-moodiness-fatigue-women.html" target="_blank" rel="noopener">Live Science summary of Armstrong LE, et al. Mild dehydration affects mood in healthy young women. Journal of Nutrition, 2012.</a></li>
+      <li><a href="https://www.efsa.europa.eu/en/press/news/nda100326" target="_blank" rel="noopener">European Food Safety Authority. Dietary reference values for water.</a></li>
+      <li><a href="https://Www.sciencedaily.com/releases/2022/08/220831152754.htm" target="_blank" rel="noopener">ScienceDaily summary of Albulescu P, et al. "Give me a break!" Micro-breaks meta-analysis. PLOS ONE, 2022.</a></li>
+      <li><a href="https://www.sedentarybehaviour.org/2012/03/08/diabetes-care-breaking-up-prolonged-sitting-reduces-postprandial-glucose-and-insulin-responses/" target="_blank" rel="noopener">Dunstan DW, et al. Breaking up prolonged sitting reduces postprandial glucose and insulin responses. Diabetes Care, 2012.</a></li>
+      <li><a href="https://cris.maastrichtuniversity.nl/en/publications/understanding-effort-regulation-comparing-pomodoro-breaks-and-sel" target="_blank" rel="noopener">Biwer F, et al. Understanding effort regulation: comparing Pomodoro breaks and self-regulated breaks. British Journal of Educational Psychology, 2023.</a></li>
+      <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9873947" target="_blank" rel="noopener">Balban MY, et al. Brief structured respiration practices enhance mood and reduce physiological arousal. Cell Reports Medicine, 2023.</a></li>
+      <li><a href="https://skeptoid.com/episodes/4433" target="_blank" rel="noopener">Skeptoid. Masaru Emoto and the water crystal claims.</a></li>
+    </ol>
+  </div>
+</section>
+</main>
+<footer>FROST Aura · Frost Active · launch@frostactive.com</footer>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const once = (el, fn) => { if (!('IntersectionObserver' in window)){ fn(); return; } const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ fn(); io.disconnect(); } }), {threshold:.35}); io.observe(el); };
+
+  /* water: fill glasses to scale (2.0 L and 2.5 L of a 2.5 L glass) */
+  once($('vWater'), () => {
+    const top = 40, bot = 268, H = bot - top;
+    [['wl1', 2.0], ['wl2', 2.5]].forEach(([id, L]) => { const h = H * L / 2.5; const r = $(id); r.setAttribute('y', bot - h); r.setAttribute('height', h); });
+    $('wv1').style.transition = 'transform 2.2s cubic-bezier(.3,.8,.3,1)'; $('wv1').setAttribute('transform', `translate(0 ${bot - H*2.0/2.5 - 4})`);
+  });
+
+  /* breaks: 22 dots */
+  (() => { let s = ''; for (let i = 0; i < 22; i++){ const c = i % 11, r = Math.floor(i / 11); s += `<circle class="dot" cx="${30 + c*34}" cy="${70 + r*80}" r="13" fill="#FFB86B" style="transition-delay:${i*.06}s"/>`; }
+    s += `<text x="200" y="210" text-anchor="middle">22 studies · 19 papers · ~30 years</text>`; $('dots').innerHTML = s; })();
+  once($('vBreaks'), () => $('vBreaks').classList.add('in'));
+
+  /* move: glucose bars drawn to scale */
+  (() => { const data = [['Sitting', 6.9, '#8C95A5'], ['Light walks', 5.2, '#FFB86B'], ['Moderate walks', 4.9, '#FFB86B']], X0 = 50, Y0 = 220, Hh = 180, max = 8; let s = '';
+    [0, 2, 4, 6, 8].forEach(v => { const y = Y0 - v/max*Hh; s += `<line x1="${X0}" x2="390" y1="${y}" y2="${y}" stroke="#283040"/><text x="${X0 - 8}" y="${y + 4}" text-anchor="end">${v}</text>`; });
+    data.forEach(([n, v, c], i) => { const x = X0 + 24 + i*112, h = v/max*Hh; s += `<rect class="gb" x="${x}" y="${Y0 - h}" width="72" height="${h}" rx="6" fill="${c}" style="transition-delay:${i*.15}s"/><text x="${x + 36}" y="${Y0 - h - 8}" text-anchor="middle" style="font-size:13px;fill:#EEF2F7">${v}</text><text x="${x + 36}" y="${Y0 + 18}" text-anchor="middle">${n}</text>`; });
+    $('glu').innerHTML = s; })();
+  once($('vMove'), () => $('vMove').classList.add('in'));
+
+  /* focus: 4 x (24 + 6) minutes across 120 minutes */
+  (() => { const X0 = 10, W = 380, sc = W/120; let s = '', t = 0, k = 0;
+    for (let i = 0; i < 4; i++){ s += `<rect class="fb" x="${X0 + t*sc}" y="50" width="${24*sc - 2}" height="56" rx="8" fill="#B9A6FF" style="transition-delay:${k++*.18}s"/>`; t += 24;
+      s += `<rect class="fb" x="${X0 + t*sc}" y="50" width="${6*sc - 2}" height="56" rx="6" fill="#FFB86B" style="transition-delay:${k++*.18}s"/>`; t += 6; }
+    [0, 30, 60, 90, 120].forEach(m => { s += `<text x="${X0 + m*sc}" y="132" text-anchor="${m === 0 ? 'start' : m === 120 ? 'end' : 'middle'}">${m} min</text>`; });
+    s += `<text x="${X0}" y="36" style="fill:#B9A6FF">24 min focus</text><text x="${X0 + 24*sc + 6}" y="36" style="fill:#FFB86B">6 min break</text>`;
+    $('blocks').innerHTML = s; })();
+  once($('vFocus'), () => $('vFocus').classList.add('in'));
+
+  /* breathe: one minute of cyclic sighing (in 2s, in 1s, out 6s) */
+  const ball = $('ball'), word = $('bword'), cnt = $('bcount'); let timer = null;
+  const setB = (s, d, w) => { ball.style.setProperty('--dur', d + 's'); ball.style.setProperty('--s', s); word.textContent = w; };
+  $('bgo').addEventListener('click', () => {
+    if (timer){ clearTimeout(timer); timer = null; setB(.55, 1, 'Ready?'); cnt.textContent = ''; $('bgo').textContent = 'Try one minute'; return; }
+    $('bgo').textContent = 'Stop'; const end = Date.now() + 60000;
+    const cycle = () => {
+      const left = Math.max(0, Math.ceil((end - Date.now())/1000)); cnt.textContent = left + ' s left';
+      if (Date.now() >= end){ setB(.55, 1.5, 'Nice.'); cnt.textContent = ''; $('bgo').textContent = 'Try one minute'; timer = null; return; }
+      setB(.85, 2, 'Breathe in'); timer = setTimeout(() => { setB(1, 1, 'A little more'); timer = setTimeout(() => { setB(.5, 6, 'Long breath out'); timer = setTimeout(cycle, 6000); }, 1000); }, 2000);
+    };
+    cycle();
+  });
+})();
+</script>
+
+</body>
+</html>
