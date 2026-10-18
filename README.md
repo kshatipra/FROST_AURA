@@ -2,7 +2,7 @@
 
 Three pages, no build step:
 
-- `index.html` - the campaign page
+- `index.html` - the campaign page.
 - `why-it-matters.html` - the research page
 - `film.html` - "The little things", the 35-second film on its own (good for sharing as a link)
 
